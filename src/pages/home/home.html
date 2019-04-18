@@ -1,14 +1,23 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
+    <button ion-button [menuToggle]=""  >
+        <ion-icon slot="primary" name="menu"></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding >
+  <ion-card>
+    <ion-card-header class="MyCardHeader" >
+      <ion-card-title> Contact </ion-card-title>
+    </ion-card-header>
+  <ion-card-content padding>
+      <p>Name : <strong> {{contact.name}}</strong></p>
+      <p>Email : <strong> {{contact.email}}</strong></p>
+       <img src="{{contact.photo}}" alt="" srcset="">
+  </ion-card-content>
+  </ion-card>
 </ion-content>
