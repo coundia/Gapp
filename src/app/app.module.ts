@@ -1,5 +1,6 @@
-import { HttpModule } from '@angular/http';
-//import { HttpModule } from '@angular/http';
+ import { HttpModule } from '@angular/http';
+// additional imports
+//import { HttpClientModule } from '@angular/common/http';//for ng > 5
 import { PlacesPage } from './../pages/places/places';
 import { MeteoPage } from './../pages/meteo/meteo';
 import { GalleryPage } from './../pages/gallery/gallery';
@@ -11,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MyServiceProvider } from '../providers/my-service/my-service';
 
 @NgModule({
   //for angular
@@ -42,7 +44,8 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
 
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MyServiceProvider
   ]
 })
 export class AppModule {}

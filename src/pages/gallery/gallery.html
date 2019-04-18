@@ -22,9 +22,9 @@
         <ion-input type="text" [(ngModel)]="motCle" placeholder="Mot Cle "></ion-input>
       </ion-item>
      <button ion-button block (click)="onSearch()">Rechercher </button>
-      <div> {{logger}}</div>
+
   </div>
-  <ion-card *ngFor="let im of images?.hit" >
+  <ion-card *ngFor="let im of images?.hits" >
     <ion-card-header class="MyCardHeader">
 
     </ion-card-header>
