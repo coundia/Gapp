@@ -2,6 +2,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { Place } from '../../model/places.model';
 /*
   Generated class for the MyServiceProvider provider.
 
@@ -27,4 +28,20 @@ export class MyServiceProvider {
     return  this.http.get(this.meteoUrl+"&q="+query+",SN")
         .map(data=>data.json());
   }
+  //for places
+  private places:Array<Place> =[
+    {"title":"A"},
+    {"title":"B"},
+    {"title":"C"},
+  ]
+  //add places
+   addPlace(p:Place){
+    this.places.push(p)
+  }
+  //get all
+  getAllPlace(){
+    return this.places;
+  }
+
+
 }

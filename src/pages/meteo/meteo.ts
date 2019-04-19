@@ -1,6 +1,6 @@
 import { MyServiceProvider } from './../../providers/my-service/my-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Toast, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the MeteoPage page.
