@@ -17,4 +17,41 @@
 
 <ion-content padding>
 
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+
+
+      <ion-searchbar  placeholder="rechercher une ville" (ionInput)="getItems($event)"></ion-searchbar>
+      <ion-list>
+        <ion-item *ngFor="let item of items" (click)="onClickVille(item)">
+          {{ item }}
+        </ion-item>
+      </ion-list>
+
+     <!--button ion-button block  color="danger" type="submit" [disabled]="!f.valid">
+       charger meteo
+     </button -->
+
+  </form>
+  <ion-item>
+      <ion-avatar item-start>
+          <img src="assets/imgs/sn-flag.png">
+      </ion-avatar>
+      <h2> {{meteo?.city?.name}}, {{meteo?.city?.country}} </h2>
+      <p> Population : {{meteo?.city?.population}} </p>
+      <!--p> ID: {{meteo?.city?.id}} </p-->
+  </ion-item>
+
+  <ion-list >
+    <ion-item *ngFor="let m of meteo?.list "  >
+      <ion-avatar item-left>
+        <img src="assets/imgs/{{m.weather[0].main}}.png">
+      </ion-avatar>
+       <h2>Date  {{m.dt*1000 | date : "dd/MM-HH:mm" }}</h2>
+       <p>Temperature <strong> {{(m.main.temp - 273.15) | number : '2.2-2'}} °C</strong> </p>
+       <p>Temperature min <strong> {{ (m.main.temp_min - 273.15 ) | number :'2.2-2'}} °C</strong> </p>
+       <p>Temperature max <strong> {{ (m.main.temp_max - 273.15 ) | number : '2.2-2'}}°C</strong> </p>
+       <p>Pression <strong> {{m.main.pressure}}</strong> </p>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

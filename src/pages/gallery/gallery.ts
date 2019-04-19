@@ -49,11 +49,15 @@ export class GalleryPage {
         data.hits.forEach(h => {
           this.images.hits.push(h);
         });
+        loading.dismiss();
       },
-      err => {console.log("error"+err)}
+      err => {console.log("error"+err);
+      loading.dismiss();
+
+    }
       )
       //console.log(this.images);
-      loading.dismiss();
+
   }
   //
   onSearch(){
