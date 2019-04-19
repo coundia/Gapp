@@ -1,3 +1,5 @@
+import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 import { NewPlacePage } from './../pages/new-place/new-place';
 import { DetailImagePage } from './../pages/detail-image/detail-image';
  import { HttpModule } from '@angular/http';
@@ -15,7 +17,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MyServiceProvider } from '../providers/my-service/my-service';
-
+import { DetailPlacePage } from '../pages/detail-place/detail-place';
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   //for angular
   declarations: [
@@ -27,12 +30,21 @@ import { MyServiceProvider } from '../providers/my-service/my-service';
     PlacesPage,
     DetailImagePage,
     NewPlacePage,
+    DetailPlacePage,
   ],
   //for fabrique Ng
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+
+    IonicStorageModule.forRoot({
+      name: '__PalcesData',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDoQhIy3BDAC1KnfHSESWVSn_FCh9ALq_8'
+    })
   ],
   bootstrap: [IonicApp],
   //for ionic
@@ -44,6 +56,7 @@ import { MyServiceProvider } from '../providers/my-service/my-service';
     PlacesPage,
     DetailImagePage,
     NewPlacePage,
+    DetailPlacePage,
   ],
   //for services ionic
   providers: [
@@ -51,7 +64,8 @@ import { MyServiceProvider } from '../providers/my-service/my-service';
 
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MyServiceProvider
+    MyServiceProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

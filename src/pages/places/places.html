@@ -24,10 +24,21 @@
   </ion-header>
 
 <ion-content padding>
-  <ion-list >
-    <ion-item *ngFor="let  p of places"   >
-      {{p.title}}
-    </ion-item>
-  </ion-list>
+
+  <ion-card >
+    <ion-item *ngFor="let  p of places" (click)="onDetailPlace(p)">
+        <img src="assets/imgs/sn-flag.png">
+        <ion-fab right top>
+          <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+
+        <ion-icon name="navigate" item-start large ></ion-icon>
+        <h2>{{p.title}}</h2>
+        <p> {{p.city}} ,{{p.country}} </p>
+        <p>{{p.timestamp | date : 'dd/mm/yyyy' }}</p>
+      </ion-item>
+  </ion-card>
 
 </ion-content>

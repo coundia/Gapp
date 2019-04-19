@@ -1,8 +1,10 @@
+
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Place } from '../../model/places.model';
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the MyServiceProvider provider.
 
@@ -12,7 +14,9 @@ import { Place } from '../../model/places.model';
 @Injectable()
 export class MyServiceProvider {
   //const
-  constructor(private http: Http) {}
+  constructor(private http: Http,
+    private storage:Storage
+    ) {}
   //proprietes
    private galleryUrlBase  = "https://pixabay.com/api/?key=10346368-75a6d91a4b5e353a96816b543&";
    //private meteoUrlCurrent  = "https://api.openweathermap.org/data/2.5/weather?APPID=1e849002dea71aa3d8da9723ff1fbedd";
@@ -36,11 +40,15 @@ export class MyServiceProvider {
   ]
   //add places
    addPlace(p:Place){
-    this.places.push(p)
+    this.places.push(p);
+    this.storage.set("places",this.places)
   }
   //get all
   getAllPlace(){
-    return this.places;
+    return this.storage.get("places").then(data =>{
+        this.places = (data!=null)?data:[];
+        return this.places;
+    });
   }
 
 
