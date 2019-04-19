@@ -1,7 +1,7 @@
 import { PlacesPage } from './../pages/places/places';
 import { MeteoPage } from './../pages/meteo/meteo';
 import { Component } from '@angular/core';
-import { Platform, MenuClose } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

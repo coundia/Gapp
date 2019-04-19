@@ -1,7 +1,7 @@
+
 import { DetailImagePage } from './../detail-image/detail-image';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {   Http } from '@angular/http';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import   'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -25,7 +25,7 @@ export class GalleryPage {
 
 //construct
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public myService:MyServiceProvider
+    public myService:MyServiceProvider,public loadCtrl:LoadingController
     ) {
   }
 
@@ -34,7 +34,12 @@ export class GalleryPage {
     this.onSearch();
   }
   //chercher un mot cle
-  onSearch(){
+  doSearch(){
+    let loading=this.loadCtrl.create({
+      content: 'Chargement...'
+    })
+    loading.present();
+
     this.myService.getGalleryByPage(this.motCle,this.size,this.currentPage)
     .subscribe(
       data => {
@@ -47,19 +52,26 @@ export class GalleryPage {
       },
       err => {console.log("error"+err)}
       )
-      console.log(this.images);
-
-
+      //console.log(this.images);
+      loading.dismiss();
   }
+  //
+  onSearch(){
+    this.images.hits=[];
+    this.doSearch();
+  }
+  //scroll
   doInfinite(event){
     if(this.currentPage <this.totalPages){
        ++this.currentPage;
 
        console.log(this.currentPage+"/"+this.totalPages)
-       this.onSearch();
+       this.doSearch();
+       //end infinite
+         event.complete();
     }
-    //informer infinite
-    event.complete();
+
+
   }
   //onDetailImage voir detail image
   onDetailImage(im){
