@@ -1,3 +1,4 @@
+import { DetailImagePage } from './../detail-image/detail-image';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {   Http } from '@angular/http';
@@ -15,7 +16,7 @@ export class GalleryPage {
   //add var
 
   motCle:string = "noir" ;
-  size:number = 10 ;
+  size:number = 5 ;
   currentPage:number = 1 ;
   images : any = {hits: []};
   logger : string="no";
@@ -53,10 +54,17 @@ export class GalleryPage {
   doInfinite(event){
     if(this.currentPage <this.totalPages){
        ++this.currentPage;
+
+       console.log(this.currentPage+"/"+this.totalPages)
        this.onSearch();
     }
     //informer infinite
     event.complete();
+  }
+  //onDetailImage voir detail image
+  onDetailImage(im){
+    //redirect
+    this.navCtrl.push(DetailImagePage,{myImage:im});
   }
 
 }

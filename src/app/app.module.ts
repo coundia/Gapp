@@ -1,3 +1,4 @@
+import { DetailImagePage } from './../pages/detail-image/detail-image';
  import { HttpModule } from '@angular/http';
 // additional imports
 //import { HttpClientModule } from '@angular/common/http';//for ng > 5
@@ -22,7 +23,8 @@ import { MyServiceProvider } from '../providers/my-service/my-service';
     //add Pages
     GalleryPage,
     MeteoPage,
-    PlacesPage
+    PlacesPage,
+    DetailImagePage
   ],
   //for fabrique Ng
   imports: [
@@ -37,7 +39,8 @@ import { MyServiceProvider } from '../providers/my-service/my-service';
     HomePage,
     GalleryPage,
     MeteoPage,
-    PlacesPage
+    PlacesPage,
+    DetailImagePage
   ],
   //for services ionic
   providers: [
