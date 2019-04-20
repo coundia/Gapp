@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NewPlacePage } from './../pages/new-place/new-place';
@@ -65,6 +66,7 @@ import { AgmCoreModule } from '@agm/core';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MyServiceProvider,
+    Camera,
     Geolocation
   ]
 })
